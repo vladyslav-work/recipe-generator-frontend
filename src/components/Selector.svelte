@@ -1,0 +1,116 @@
+<script lang="ts">
+  import { nutritionalStyles, options } from "../lib/data";
+  import { data_store } from "../lib/store";
+  import type { IOption } from "../lib/types";
+  import Options from "./ui/options.svelte";
+  import Select from "./ui/select.svelte";
+  import { push } from "svelte-spa-router";
+
+  let protein: IOption[] = options;
+  let nutritionalStyle = nutritionalStyles;
+  let cuisine = ["Italian", "Mexican", "Chinese", "Japanese"];
+
+  import axios, { type AxiosResponse } from "axios";
+  import { SERVER_URL } from "../api";
+
+  const getOptions = async (
+    protein: string,
+    nutrition: string,
+    cuisine: string
+  ) => {
+    try {
+      const response: AxiosResponse = await axios.post(`${SERVER_URL}/api`, {
+        protein,
+        nutrition,
+        cuisine,
+      });
+      console.log(response.data);
+      const { recipeId, variations } = response.data;
+      data_store.update(() => {
+        console.log({
+          recipeId,
+          protein: protein,
+          nutrition: nutrition,
+          cuisine: cuisine,
+          variations: variations,
+        });
+        return {
+          recipeId,
+          protein: protein,
+          nutrition: nutrition,
+          cuisine: cuisine,
+          variations: variations,
+        };
+      });
+      push(`/options/${recipeId}`);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  let isAllSelected = false;
+
+  function handleChange() {
+    const form = new FormData(
+      document.querySelector("#form") as HTMLFormElement
+    );
+    const protein = form.get("protein");
+    const nutrition = form.get("nutrition");
+    const cuisine = form.get("cuisine");
+    isAllSelected = !!protein && !!nutrition && !!cuisine;
+    console.log(isAllSelected);
+  }
+
+  function handleSubmit() {
+    // using form data to get the selected values
+    const form = new FormData(
+      document.querySelector("#form") as HTMLFormElement
+    );
+    const protein = form.get("protein");
+    const nutrition = form.get("nutrition");
+    const cuisine = form.get("cuisine");
+    console.log(protein, nutrition, cuisine);
+    if (!protein || !nutrition || !cuisine) return;
+    getOptions(protein as string, nutrition as string, cuisine as string);
+  }
+</script>
+
+<form
+  id="form"
+  class="rounded-xl border p-4 mt-20"
+  action=""
+  method="post"
+  on:submit={handleSubmit}
+  on:change={handleChange}
+>
+  <h2 class="text-blue-950 font-bold text-3xl">Make your selections</h2>
+  <p class="py-3">
+    Choose a protein, nutritional style, and cuisine to get started.
+  </p>
+
+  <div class="flex flex-col gap-3">
+    <Options options={protein} name="protein" />
+    <div class="py-2 lg:py-0"></div>
+    <Options options={nutritionalStyle} name="nutrition" />
+    <div class="py-2 lg:py-0"></div>
+    <Select options={cuisine} name="cuisine" />
+
+    {#if isAllSelected}
+      <button
+        type="submit"
+        class="bg-blue-600/100 text-white p-2.5 rounded-lg text-center font-bold"
+      >
+        Generate Recipes!
+      </button>
+    {/if}
+    {#if isAllSelected === false}
+      <button
+        type="submit"
+        class="bg-blue-400/35 text-white p-2.5 rounded-lg text-center font-bold"
+        disabled
+      >
+        Generate Recipes!
+      </button>
+    {/if}
+  </div>
+</form>
