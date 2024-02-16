@@ -25,3 +25,10 @@ export interface IOption{
     name: string;
     icon: string;
 }
+
+export interface Variation {
+    id: string;
+    recipe: string;
+    title: string;
+    description: string;
+  }

@@ -2,24 +2,22 @@
   import { push } from "svelte-spa-router";
   import AiBanner from "../components/AIBanner.svelte";
   import BbqStyle from "../components/BbqStyle.svelte";
-  import Button from "../components/ui/button.svelte";
   import BreadCrumb from "../components/ui/bread-crumb.svelte";
   import { onMount } from "svelte";
   import axios, { type AxiosResponse } from "axios";
   import { SERVER_URL } from "../api";
+  import { type Variation } from "../lib/types";
+  import { variation } from "../lib/store";
 
-  export const params: { [key: string]: string } = {};
+  export let params: { [key: string]: string } = {};
 
-  let variations: {
-    id: string;
-    recipe: string;
-    name: string;
-    description: string;
-  }[] = [];
+  let variations: Variation[] = [];
+  let wait = false
 
   onMount(async () => {
     if (!params.recipeId) {
       push("/");
+      return;
     }
     try {
       const response = await axios.get(
@@ -43,14 +41,34 @@
           description,
         })
       );
+      console.log(variations);
     } catch (error) {
       console.log(error);
+      alert("server error, please refresh the page again");
     }
   });
 
-  const handleCreate = () => {
-    const variation = {}
-  }
+
+  const handleCreate = async () => {
+    console.log("create", variation);
+    
+    if (!variation) return;
+    console.log("create", variation);
+    wait = true
+    try {
+      const response = await axios.post(`${SERVER_URL}/api/select`, {
+        recipeId: $variation?.recipe,
+        variationId: $variation?.id,
+      });
+      console.log('select', response.data);
+      
+      push(`/result/${$variation?.recipe}`);
+    } catch (error) {
+      console.log(error);
+      alert("server error, please refresh the page again");
+    }
+    wait = false
+  };
 </script>
 
 <BreadCrumb pathname="history" />
@@ -75,9 +93,10 @@
         transition
         duration-300
         ease-in-out
-        bg-blue-900
+        ${wait ? "bg-blue-300" : "bg-blue-900"}
     `}
-    on:click={handleCreate}
+        on:click={handleCreate}
+        disabled={wait}
       >
         Create Custom Recipe
       </button>

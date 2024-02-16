@@ -1,14 +1,14 @@
 <script lang="ts">
-    import type { IDirection } from "../../lib/types";
 
-    export let directions: IDirection[] = [];
+    export let directions: string[] = [];
+    export let readyTime: number | undefined;
 </script>
 
 <section class="my-4">
-    <h2 class="mb-3 text-center"> <span class="text-blue-900 text-lg font-bold">{directions.length} steps</span> Ready in about 40 minutes</h2>
+    <h2 class="mb-3 text-center"> <span class="text-blue-900 text-lg font-bold">{directions.length} steps</span> Ready in about {readyTime} minutes</h2>
     <ol>
         {#each directions as direction}
-            <li class="text-gray-700 mb-2">{direction.description}</li>
+            <li class="text-gray-700 mb-2">{direction}</li>
         {/each}
     </ol>
 </section>

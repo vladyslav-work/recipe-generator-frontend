@@ -42,9 +42,12 @@
           variations: variations,
         };
       });
+      console.log('to ==========> ', recipeId);
+      
       push(`/options/${recipeId}`);
     } catch (error) {
       console.error(error);
+      alert("Server Error, please try again")
     }
   };
 
@@ -61,7 +64,10 @@
     console.log(isAllSelected);
   }
 
-  function handleSubmit() {
+  function handleSubmit(
+    e: SubmitEvent & { currentTarget: EventTarget & HTMLFormElement }
+  ) {
+    e.preventDefault();
     // using form data to get the selected values
     const form = new FormData(
       document.querySelector("#form") as HTMLFormElement
