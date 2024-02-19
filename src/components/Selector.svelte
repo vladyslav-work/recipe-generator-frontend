@@ -47,9 +47,9 @@
       console.log("to ==========> ", recipeId);
 
       push(`/options/${recipeId}`);
-    } catch (error) {
+    } catch (error: any) {
       console.error(error);
-      alert("Server Error, please try again");
+      alert(error?.response?.data?.message || "Server Error, please try again");
     }
     wait = false
   };
