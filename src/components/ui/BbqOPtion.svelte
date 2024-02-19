@@ -24,10 +24,9 @@
 <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
 <label
     on:click={onClick}
-    class:selected
     class={`${
-        selected && "bg-blue-100 border-blue-500"
-    } relative w-full p-2.5 border-2 cursor-pointer rounded-lg`}
+        selected && " border-blue-500"
+    } relative w-full p-2.5 border-2 cursor-pointer rounded-lg bg-transparent`}
 >
     <input
         required
@@ -35,7 +34,7 @@
         bind:group={selected}
         {name}
         value={title}
-        class="absolute top-2 right-2"
+        class="absolute top-2 right-2 -z-10"
     />
     <h2 class="text-lg text-blue-900 font-semibold">{title}</h2>
     {description}
