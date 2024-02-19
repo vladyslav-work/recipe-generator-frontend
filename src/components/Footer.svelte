@@ -19,7 +19,7 @@
     </div>
     <div class="right flex gap-2 flex-col lg:flex-row">
         {#each footer_links as link (link.url)}
-            <a href={link.url} class=" hover:text-blue-900 mr-3">{link.name}</a>
+            <a href={link.url} class=" hover:text-sky-900 mr-3">{link.name}</a>
         {/each}
     </div>
 </footer>

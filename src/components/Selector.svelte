@@ -5,6 +5,7 @@
   import Options from "./ui/options.svelte";
   import Select from "./ui/select.svelte";
   import { push } from "svelte-spa-router";
+  import subtitleIcon from "../assets/sub-title-icon.svg";
 
   let protein: IOption[] = options;
   let nutritionalStyle = nutritionalStyles;
@@ -18,6 +19,7 @@
     nutrition: string,
     cuisine: string
   ) => {
+    wait = true
     try {
       const response: AxiosResponse = await axios.post(`${SERVER_URL}/api`, {
         protein,
@@ -42,16 +44,18 @@
           variations: variations,
         };
       });
-      console.log('to ==========> ', recipeId);
-      
+      console.log("to ==========> ", recipeId);
+
       push(`/options/${recipeId}`);
     } catch (error) {
       console.error(error);
-      alert("Server Error, please try again")
+      alert("Server Error, please try again");
     }
+    wait = false
   };
 
   let isAllSelected = false;
+  let wait = false;
 
   function handleChange() {
     const form = new FormData(
@@ -89,7 +93,10 @@
   on:submit={handleSubmit}
   on:change={handleChange}
 >
-  <h2 class="text-blue-950 font-bold text-3xl">Make your selections</h2>
+  <h2 class="text-sky-900 font-bold text-3xl flex items-end gap-3">
+    <img src={subtitleIcon} alt="make" class="inline" />
+    Make your selections
+  </h2>
   <p class="py-3">
     Choose a protein, nutritional style, and cuisine to get started.
   </p>
@@ -101,7 +108,7 @@
     <div class="py-2 lg:py-0"></div>
     <Select options={cuisine} name="cuisine" />
 
-    {#if isAllSelected}
+    {#if isAllSelected && !wait}
       <button
         type="submit"
         class="bg-blue-600/100 text-white p-2.5 rounded-lg text-center font-bold"
@@ -109,13 +116,13 @@
         Generate Recipes!
       </button>
     {/if}
-    {#if isAllSelected === false}
+    {#if isAllSelected === false || wait}
       <button
         type="submit"
         class="bg-blue-400/35 text-white p-2.5 rounded-lg text-center font-bold"
         disabled
       >
-        Generate Recipes!
+        {wait ? "Generating..." : "Generate Recipes!"}
       </button>
     {/if}
   </div>

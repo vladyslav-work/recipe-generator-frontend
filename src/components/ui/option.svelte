@@ -4,6 +4,9 @@
     export let icon: string;
     export let onSelection: (value: string) => void;
     export let name: string;
+
+    console.log(selected);
+    
 </script>
 
 <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
@@ -13,7 +16,7 @@
     class:selected
     class={`${
         selected && "bg-blue-100 border-blue-500"
-    } relative min-w-full sm:min-w-fit p-2.5 flex-1 flex gap-2 items-center justify-center border-2 cursor-pointer rounded-lg`}
+    } relative min-w-full sm:min-w-fit p-2.5 flex-1 flex gap-2 items-center justify-center border-2 cursor-pointer rounded-lg bg-transparent`}
 >
     <input
         required
@@ -21,7 +24,7 @@
         bind:group={selected}
         {value}
         {name}
-        class="absolute top-2 right-2"
+        class="absolute top-2 right-2 -z-10"
     />
     <div class="min-w-28 flex gap-4">
         <div>

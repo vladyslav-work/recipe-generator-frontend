@@ -5,7 +5,7 @@
 </script>
 
 <section class="my-4">
-    <h2 class="text-blue-900 text-3xl font-bold flex gap-3 mb-3">
+    <h2 class="text-sky-900 text-3xl font-bold gap-3 mb-4 flex items-end">
         <!-- svelte-ignore missing-declaration -->
         <div class="inline-block">
             <SubTitle />
@@ -16,7 +16,7 @@
     </h2>
     <div>
         {#each descriptions as description}
-            <p class="text-gray-700 mb-2">{description}</p>
+            <p class="text-gray-700 mb-6">{description}</p>
         {/each}
     </div>
 </section>
