@@ -50,10 +50,8 @@
 
 
   const handleCreate = async () => {
-    console.log("create", variation);
     
-    if (!variation) return;
-    console.log("create", variation);
+    if (!$variation) return;
     wait = true
     try {
       const response = await axios.post(`${SERVER_URL}/api/select`, {

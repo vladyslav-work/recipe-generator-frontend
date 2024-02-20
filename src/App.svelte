@@ -10,6 +10,9 @@
   import { data_store, is_all_selected } from "./lib/store";
   import { onMount } from "svelte";
   import ScrollUp from "./components/ui/scroll-up.svelte";
+  import FingerprintJS from "@fingerprintjs/fingerprintjs";
+  import axios from "axios";
+  import { SERVER_URL } from "./api";
 
   const routes = {
     "/": Home,
@@ -18,10 +21,23 @@
     "*": () => replace("/"),
   };
 
-  onMount(() => {
+  let fingerprint = "";
+
+  onMount(async () => {
     is_all_selected.update((data) => {
       return true;
     });
+    try {
+      const fp = await FingerprintJS.load();
+      const result = await fp.get();
+
+      // This is the visitor identifier:
+      fingerprint = result.visitorId;
+      console.log(`Fingerprint: ${fingerprint}`);
+      await axios.post(`${SERVER_URL}/api/fingerprint`, { fingerprint });
+    } catch (error) {
+      console.error("Error getting fingerprint:", error);
+    }
   });
 
   $: {
