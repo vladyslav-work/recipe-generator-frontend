@@ -55,9 +55,9 @@
       );
       console.log(recipe, ingredients, directions);
       generating = false;
-    } catch (error) {
+    } catch (error : any) {
       console.log(error);
-      alert("server error, please refresh the page again");
+      alert(error.response?.data?.message || "server error, please refresh the page again");
     }
   });
 </script>
