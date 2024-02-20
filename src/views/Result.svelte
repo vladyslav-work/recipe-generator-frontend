@@ -9,7 +9,7 @@
   import { push } from "svelte-spa-router";
   import axios from "axios";
   import { SERVER_URL } from "../api";
-  import { showing_form } from "../lib/store";
+  import { data_store, showing_form, step, variation } from "../lib/store";
 
   export let params: { [key: string]: string } = {};
   let generating = true;
@@ -29,12 +29,13 @@
   onMount(async () => {
     showing_form.set(false);
     generating = true;
-    if (!params.recipeId) {
-      push("/");
+    const recipeId = $variation?.recipe
+    if (!recipeId) {
+      step.update(() => 1)
       return;
     }
     try {
-      const response = await axios.get(`${SERVER_URL}/api/${params.recipeId}`);
+      const response = await axios.get(`${SERVER_URL}/api/${recipeId}`);
       const responseData = response.data;
 
       recipe = {
@@ -62,18 +63,18 @@
   });
 </script>
 
-<BreadCrumb pathname="result" />
+<BreadCrumb />
 <AiBanner
   title="AI Recipe Generator"
-  description="Your Custorm AI Generated Recipe is Ready to be served"
+  description="Your Custorm AI Generated Recipe is Ready to be served - Bon appétit!"
 />
 <ShareBanner
-  title={generating ? "Generating..." : recipe?.title}
-  description={generating ? "Generating..." : recipe?.description}
+  title={generating ? $variation?.title : recipe?.title}
+  description={generating ? $variation?.description : recipe?.description}
   image={recipe?.image}
-  nutrition={recipe?.nutrition}
-  cuisine={recipe?.cuisine}
-  protein={recipe?.protein}
+  nutrition={$data_store.nutrition}
+  cuisine={$data_store.cuisine}
+  protein={$data_store.protein}
   generating={generating}
 />
 

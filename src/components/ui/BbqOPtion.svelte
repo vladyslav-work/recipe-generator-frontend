@@ -36,7 +36,7 @@
         value={title}
         class="absolute top-2 right-2 -z-10"
     />
-    <h2 class="text-lg text-blue-900 font-semibold">{title}</h2>
+    <h2 class="text-lg text-sky-900 font-semibold">{title}</h2>
     {description}
 </label>
 

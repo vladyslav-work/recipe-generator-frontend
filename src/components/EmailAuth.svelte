@@ -25,9 +25,9 @@
 </script>
 
 {#if !showing_message}
-    <div class=" p-8 flex items-center flex-col border rounded-xl">
-        <h1 class="text-3xl font-bold mb-4 text-center">Email Address</h1>
-        <p class="mb-4 text-center">
+    <div class="p-2 sm:p-8 flex items-center flex-col border rounded-xl">
+        <h1 class="text-3xl font-bold mb-2 sm:mb-4 text-center">Email Address</h1>
+        <p class="mb-2 sm:mb-4 text-center">
             Enter your email address to receive a link to sign in.
         </p>
         <form
@@ -56,9 +56,9 @@
 
 {#if showing_message}
     <section class="bg-blue-900/10 p-8 rounded-md">
-        <h1 class="text-blue-900 font-bold text-3xl mb-2 text-center">Email Address</h1>
+        <h1 class="text-sky-900 font-bold text-3xl mb-2 text-center">Email Address</h1>
         <p class="text-center">
-            We sent an email to <a class="text-blue-600 underline" href="mailto:{$user_email}">{$user_email}</a>. Click on the link in the email to
+            We sent an email to <a class="text-sky-600 underline" href="mailto:{$user_email}">{$user_email}</a>. Click on the link in the email to
             verify your account and add this recipe!
         </p>
         <p class="text-center">

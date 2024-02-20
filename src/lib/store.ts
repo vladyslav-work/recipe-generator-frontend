@@ -15,6 +15,12 @@ export const is_all_selected = writable<boolean | null>(null);
 
 export const generating = writable<boolean>(true)
 
+export const step = writable<number>(1)
+
+export const recipeId = writable<string | null>(null)
+
+export const variations = writable<Variation[]>([]) 
+
 export const user_email = writable<string | null>(null)
 
 export const showing_form = writable<boolean>(false)

@@ -32,14 +32,14 @@
                 <div
                     class="search border rounded-md flex items-center p-0 pl-4 border-r-0 shadow-lg"
                 >
-                    <Search class="text-blue-800" />
+                    <Search class="text-sky-800" />
                     <input
                         type="text"
                         placeholder="Find a recipe"
-                        class="bg-transparent box-border p-2 max-w-full min-w-[500px] outline-none border-r-0 border-0 focus:border-b-2 focus:border-blue-800 transition-all duration-300 ease-in-out"
+                        class="bg-transparent box-border p-2 max-w-full md:min-w-[250px] lg:min-w-[400px] outline-none border-r-0 border-0 focus:border-b-2 focus:border-blue-800 transition-all duration-300 ease-in-out"
                     />
                     <button
-                        class="text-blue-800 bg-blue-200 text-lg font-bold border-l border-r p-1 px-4"
+                        class="text-sky-800 bg-blue-200 text-lg font-bold border-l border-r p-1 px-4 text-nowrap"
                     >
                         Ingredient Search +
                     </button>
@@ -53,15 +53,15 @@
             <button
                 class="ml-5 hidden border-2 p-[7px] px-3 rounded-lg font-semibold lg:flex items-center gap-2"
             >
-                <User class="text-blue-800" />
+                <User class="text-sky-800" />
                 <p>Login</p>
             </button>
 
             <div class="menu lg:hidden flex gap-3">
-                <Search class="text-blue-800 text-2xl" />
-                <User class="text-blue-800 text-2xl" />
+                <Search class="text-sky-800 text-2xl" />
+                <User class="text-sky-800 text-2xl" />
                 <button on:click={() => (opened_humberger = !opened_humberger)}>
-                    <Menu class="text-blue-800 text-2xl" />
+                    <Menu class="text-sky-800 text-2xl" />
                 </button>
             </div>
         </div>
@@ -75,7 +75,7 @@
                         <li>
                             <a
                                 href={link.url}
-                                class="font-semibold hover:text-blue-900"
+                                class="font-semibold hover:text-sky-900"
                             >
                                 {link.name}
                             </a>
@@ -91,7 +91,7 @@
                     <li>
                         <a
                             href={link.url}
-                            class="font-semibold hover:text-blue-900"
+                            class="font-semibold hover:text-sky-900"
                         >
                             {link.name}
                         </a>

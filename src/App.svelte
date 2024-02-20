@@ -7,19 +7,12 @@
   import Home from "./views/Home.svelte";
   import History from "./views/History.svelte";
   import Result from "./views/Result.svelte";
-  import { data_store, is_all_selected } from "./lib/store";
+  import { data_store, is_all_selected, step } from "./lib/store";
   import { onMount } from "svelte";
   import ScrollUp from "./components/ui/scroll-up.svelte";
   import FingerprintJS from "@fingerprintjs/fingerprintjs";
   import axios from "axios";
   import { SERVER_URL } from "./api";
-
-  const routes = {
-    "/": Home,
-    "/options/:recipeId": History,
-    "/result/:recipeId": Result,
-    "*": () => replace("/"),
-  };
 
   let fingerprint = "";
 
@@ -51,9 +44,15 @@
 </script>
 
 <Header />
-<main class=" min-h-screen mx-auto pb-11 container">
+<main class=" min-h-screen mx-auto pb-6 container px-2 sm:px-4">
   <article class="max-w-[1000px] mx-auto">
-    <Router {routes} />
+    {#if $step === 1}
+        <Home />
+    {:else if $step === 2}
+        <History />
+    {:else if $step === 3}
+        <Result />
+    {/if}
   </article>
 </main>
 <ScrollUp />

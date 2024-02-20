@@ -1,6 +1,6 @@
 <script lang="ts">
   import { nutritionalStyles, options } from "../lib/data";
-  import { data_store } from "../lib/store";
+  import { data_store, step } from "../lib/store";
   import type { IOption } from "../lib/types";
   import Options from "./ui/options.svelte";
   import Select from "./ui/select.svelte";
@@ -45,8 +45,7 @@
         };
       });
       console.log("to ==========> ", recipeId);
-
-      push(`/options/${recipeId}`);
+      step.update(() => 2)
     } catch (error: any) {
       console.error(error);
       alert(error?.response?.data?.message || "Server Error, please try again");
@@ -93,8 +92,8 @@
   on:submit={handleSubmit}
   on:change={handleChange}
 >
-  <h2 class="text-sky-900 font-bold text-3xl flex items-end gap-3">
-    <img src={subtitleIcon} alt="make" class="inline" />
+  <h2 class="text-sky-900 font-bold text-xl sm:text-2xl flex items-end gap-3">
+    <img src={subtitleIcon} alt="make" class="inline w-8" />
     Make your selections
   </h2>
   <p class="py-3">

@@ -12,14 +12,14 @@
 </script>
 
 <footer
-    class=" p-3 mx-auto flex justify-between gap-10 lg:flex-row flex-col px-8"
+    class=" p-3 mx-auto flex justify-between gap-3 flex-col md:flex-row  px-8 items-center"
 >
-    <div class="left">
+    <div class="left w-full md:w-fit">
         <Logo />
     </div>
-    <div class="right flex gap-2 flex-col lg:flex-row">
+    <div class="right flex gap-2 flex-row flex-wrap justify-center items-center">
         {#each footer_links as link (link.url)}
-            <a href={link.url} class=" hover:text-sky-900 mr-3">{link.name}</a>
+            <a href={link.url} class=" hover:text-sky-900 mr-3 text-nowrap">{link.name}</a>
         {/each}
     </div>
 </footer>
