@@ -5,7 +5,7 @@
 </script>
 
 <section class="my-4">
-    <h2 class="text-sky-900 text-3xl font-bold gap-3 mb-4 flex items-end">
+    <h2 class="text-sky-900 text-2xl sm:text-3xl font-bold gap-3 mb-4 flex items-end">
         <!-- svelte-ignore missing-declaration -->
         <div class="inline-block">
             <SubTitle />
