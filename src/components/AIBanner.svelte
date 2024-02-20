@@ -12,7 +12,7 @@
     <MainTitle class="inline-block w-14" />
     <span>{title}</span>
   </h2>
-  <p class="text-left">
+  <p class="text-center">
     {#if $step === 2}
       <span class="text-yellow-500">Step {$step}:</span>
     {/if}

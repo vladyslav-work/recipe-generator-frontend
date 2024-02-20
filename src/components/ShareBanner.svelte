@@ -61,7 +61,7 @@
         alt={title}
       />
     {:else}
-      <div class="flex items-center justify-center flex-col rounded-md min-h-80">
+      <div class="flex items-center justify-center flex-col rounded-md min-h-56">
         <GenerationImage />
         Generating...
       </div>
