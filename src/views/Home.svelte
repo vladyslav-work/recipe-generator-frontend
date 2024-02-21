@@ -5,13 +5,12 @@
   import Selector from "../components/Selector.svelte";
   // import { location } from "svelte-spa-router";
 
-  
 </script>
 
 <div>
   <BreadCrumb/>
 
-  <h1 class="bg-yellow-400 text-2xl p-3 rounded text-center">Sorry, I have been blocked by my upwork account. My gmail address is <a href="mailto:vladyslav.social@gmail.com" class="text-blue-600">vladyslav.social@gmail.com</a> , please contact me via gmail. Thank you</h1>
+  <!-- <h1 class="bg-yellow-400 text-2xl p-3 rounded text-center">Sorry, I have been blocked by my upwork account. My gmail address is <a href="mailto:vladyslav.social@gmail.com" class="text-blue-600">vladyslav.social@gmail.com</a> , please contact me via gmail. Thank you</h1> -->
 
   <AddBanner
     title="Recipe Generator"
