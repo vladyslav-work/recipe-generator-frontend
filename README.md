@@ -46,4 +46,4 @@ import { writable } from 'svelte/store'
 export default writable(0)
 ```
 
-vladislavmondzolevskij105@gmail.com
+vladyslav.social@gmail.com
