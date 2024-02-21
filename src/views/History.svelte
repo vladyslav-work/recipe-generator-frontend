@@ -40,7 +40,7 @@
   <div class="p-4 sm:p-8 border rounded-lg mt-8">
     <h2 class="text-sky-900 font-bold text-2xl sm:text-3xl flex items-center gap-3">
       <img src={subtitleIcon} alt="make" class="inline" />
-      {`Bbq style ${$data_store.protein} recipes:`}
+      {`${$data_store.protein} & ${$data_store.nutrition} & ${$data_store.cuisine} recipes:`}
     </h2>
     <BbqStyle options={$data_store.variations || []} />
 
