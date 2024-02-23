@@ -31,7 +31,7 @@
     <input
         required
         type="radio"
-        bind:group={selected}
+        checked={selected}
         {name}
         value={title}
         class="absolute top-2 right-2 -z-10"
