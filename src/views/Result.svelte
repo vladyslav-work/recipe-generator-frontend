@@ -11,13 +11,12 @@
   import { SERVER_URL } from "../api";
   import { data_store, showing_form, step, variation } from "../lib/store";
 
-  export let params: { [key: string]: string } = {};
   let generating = true;
   let recipe: {
     title: string;
     description: string;
     serving: number;
-    image: string;
+    image: string | undefined;
     nutrition: string;
     protein: string;
     cuisine: string;
@@ -29,24 +28,24 @@
   onMount(async () => {
     showing_form.set(false);
     generating = true;
-    const recipeId = $variation?.recipe
+    const recipeId = $variation?.recipe;
     if (!recipeId) {
-      step.update(() => 1)
+      step.update(() => 1);
       return;
     }
     try {
-      const response = await axios.get(`${SERVER_URL}/api/${recipeId}`);
+      let response = await axios.get(`${SERVER_URL}/api/${recipeId}`);
       const responseData = response.data;
 
       recipe = {
         title: responseData.recipe.title,
         description: responseData.recipe.description,
         serving: responseData.recipe.serving,
-        image: responseData.recipe.image,
         nutrition: responseData.recipe.nutrition,
+        image: undefined,
         protein: responseData.recipe.protein,
         cuisine: responseData.recipe.cuisine,
-        readyTime: responseData.recipe.readyTime
+        readyTime: responseData.recipe.readyTime,
       };
       ingredients = responseData.ingredients.map(
         ({ description }: { description: string }) => description
@@ -56,9 +55,16 @@
       );
       console.log(recipe, ingredients, directions);
       generating = false;
-    } catch (error : any) {
+
+      response = await axios.get(`${SERVER_URL}/api/${recipeId}/image`);
+      const image = response.data;
+      recipe.image = image;
+    } catch (error: any) {
       console.log(error);
-      alert(error.response?.data?.message || "server error, please refresh the page again");
+      alert(
+        error.response?.data?.message ||
+          "server error, please refresh the page again"
+      );
     }
   });
 </script>
@@ -71,15 +77,19 @@
 <ShareBanner
   title={generating ? $variation?.title : recipe?.title}
   description={generating ? $variation?.description : recipe?.description}
-  image={recipe?.image}
   nutrition={$data_store.nutrition}
   cuisine={$data_store.cuisine}
   protein={$data_store.protein}
-  generating={generating}
+  {generating}
 />
 
 {#if !generating}
-  <TabedResult {ingredients} {directions} servings={recipe?.serving} readyTime={recipe?.readyTime}/>
+  <TabedResult
+    {ingredients}
+    {directions}
+    servings={recipe?.serving}
+    readyTime={recipe?.readyTime}
+  />
 {/if}
 
-<Auth {generating}/>
+<Auth {generating} />
