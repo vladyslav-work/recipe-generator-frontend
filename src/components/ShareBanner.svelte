@@ -13,7 +13,7 @@
   export let generating = true;
 </script>
 
-<div class="shared grid gap-5 my-8 items-center">
+<div class="shared gap-5 my-8 items-center">
   <!-- <div
     class="left overflow-hidden bg-slate-100 rounded-lg flex-1 flex justify-center items-center h-fit"
   >
