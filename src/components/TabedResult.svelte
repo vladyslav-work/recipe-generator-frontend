@@ -7,12 +7,12 @@
   export let directions: string[] = [];
   export let servings: number | undefined = 0;
   export let readyTime: number | undefined = 0;
-  export let generating: boolean = true
+  export let generating: boolean = true;
   let activeTab = "ingredients";
 </script>
 
-<section class="p-4 sm:p-8 border-2 rounded-lg  min-h-[500px]">
-  {#if !generating}
+{#if !generating}
+  <section class="p-4 sm:p-8 border-2 rounded-lg min-h-[600px]">
     <div class="flex items-center justify-center gap-3">
       <button
         class="px-3 btn font-semibold"
@@ -43,7 +43,9 @@
         </div>
       {/if}
     </div>
-  {:else}
+  </section>
+{:else}
+  <section class="p-4 sm:p-8 border-2 rounded-lg min-h-[600px] flex justify-center items-center">
     <div role="status" class="flex justify-center flex-col items-center gap-2">
       <svg
         aria-hidden="true"
@@ -63,8 +65,8 @@
       </svg>
       <span class="">Loading your recipe...</span>
     </div>
-  {/if}
-</section>
+  </section>
+{/if}
 
 <style>
   .active {
