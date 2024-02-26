@@ -14,22 +14,6 @@
 </script>
 
 <div class="shared gap-5 my-8 items-center">
-  <!-- <div
-    class="left overflow-hidden bg-slate-100 rounded-lg flex-1 flex justify-center items-center h-fit"
-  >
-    {#if !generating}
-      <img
-        src={`${SERVER_URL}${image}`}
-        class="w-full h-auto"
-        alt={title}
-      />
-    {:else}
-      <div class="flex items-center justify-center flex-col rounded-md min-h-56">
-        <GenerationImage />
-        Generating...
-      </div>
-    {/if}
-  </div> -->
   <div class="right">
     <div class="flex justify-between items-center text-sm sm:text-base">
       <div class="flex gap-1 sm:gap-2">

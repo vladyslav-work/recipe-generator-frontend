@@ -1,7 +1,4 @@
 <script lang="ts">
-  import Router from "svelte-spa-router";
-  import { wrap } from "svelte-spa-router/wrap";
-  import { replace } from "svelte-spa-router";
   import Footer from "./components/Footer.svelte";
   import Header from "./components/Header.svelte";
   import Home from "./views/Home.svelte";

@@ -83,13 +83,12 @@
   {generating}
 />
 
-{#if !generating}
-  <TabedResult
-    {ingredients}
-    {directions}
-    servings={recipe?.serving}
-    readyTime={recipe?.readyTime}
-  />
-{/if}
+<TabedResult
+  {ingredients}
+  {directions}
+  servings={recipe?.serving}
+  readyTime={recipe?.readyTime}
+  {generating}
+/>
 
 <Auth {generating} />
