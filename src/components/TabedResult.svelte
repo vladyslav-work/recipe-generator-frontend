@@ -11,7 +11,7 @@
   let activeTab = "ingredients";
 </script>
 
-<section class="p-4 sm:p-8 border-2 rounded-lg">
+<section class="p-4 sm:p-8 border-2 rounded-lg min-[h]:500px">
   {#if !generating}
     <div class="flex items-center justify-center gap-3">
       <button
