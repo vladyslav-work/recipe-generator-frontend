@@ -44,7 +44,7 @@
       {/if}
     </div>
   {:else}
-    <div role="status" class="flex justify-center">
+    <div role="status" class="flex justify-center flex-col items-center gap-2">
       <svg
         aria-hidden="true"
         class="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
@@ -61,7 +61,7 @@
           fill="currentFill"
         />
       </svg>
-      <span class="sr-only">Loading...</span>
+      <span class="">Loading your recipe...</span>
     </div>
   {/if}
 </section>
