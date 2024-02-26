@@ -7,7 +7,7 @@
   export let directions: string[] = [];
   export let servings: number | undefined = 0;
   export let readyTime: number | undefined = 0;
-  export const generating: boolean = true
+  export let generating: boolean = true
   let activeTab = "ingredients";
 </script>
 
