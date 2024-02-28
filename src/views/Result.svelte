@@ -56,9 +56,9 @@
       console.log(recipe, ingredients, directions);
       generating = false;
 
-      response = await axios.get(`${SERVER_URL}/api/${recipeId}/image`);
-      const image = response.data;
-      recipe.image = image;
+      // response = await axios.get(`${SERVER_URL}/api/${recipeId}/image`);
+      // const image = response.data;
+      // recipe.image = image;
     } catch (error: any) {
       console.log(error);
       alert(

@@ -12,7 +12,7 @@
 </script>
 
 {#if !generating}
-  <section class="p-4 sm:p-8 border-2 rounded-lg min-h-[600px]">
+  <section class="p-4 sm:p-8 border-2 rounded-lg min-h-[650px]">
     <div class="flex items-center justify-center gap-3">
       <button
         class="px-3 btn font-semibold"
