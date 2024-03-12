@@ -41,7 +41,7 @@
             `${ingredient.quantity && ingredient.quantity.toLowerCase() !== "none" ? ingredient.quantity : ""} <strong>${ingredient.name}</strong> <em>${ingredient.preparationMethod && ingredient.preparationMethod.toLowerCase() !== "none" ? ingredient.preparationMethod : ""}</em>`
         ),
         directions: response.data.directions.map(
-          ({ description }: { description: string }) => description
+          (description : string ) => description
         ),
       }));
       console.log("select", response.data);
