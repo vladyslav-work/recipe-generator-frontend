@@ -25,13 +25,13 @@
       });
 
       recipe.update(() => ({
-        title: response.data.recipe.title,
-        description: response.data.recipe.description,
-        serving: response.data.recipe.serving,
-        nutrition: response.data.recipe.nutrition,
-        protein: response.data.recipe.protein,
-        cuisine: response.data.recipe.cuisine,
-        readyTime: response.data.recipe.readyTime,
+        title: response.data.title,
+        description: response.data.description,
+        serving: response.data.serving,
+        nutrition: response.data.nutrition,
+        protein: response.data.protein,
+        cuisine: response.data.cuisine,
+        readyTime: response.data.readyTime,
         ingredients: response.data.ingredients.map(
           (ingredient: {
             quantity?: string;
