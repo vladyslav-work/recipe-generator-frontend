@@ -1,5 +1,5 @@
 import { writable } from "svelte/store";
-import type { Variation } from "./types";
+import type { Recipe, Variation } from "./types";
 
 type Store = {
     [key: string]: any;
@@ -10,6 +10,8 @@ export const data_store = writable<Store>({
 });
 
 export const variation = writable<Variation | null>(null)
+
+export const recipe = writable<Recipe | null>(null)
 
 export const is_all_selected = writable<boolean | null>(null);
 

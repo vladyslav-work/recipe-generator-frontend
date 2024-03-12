@@ -1,3 +1,5 @@
+import type Ingredients from "../components/ui/Ingredients.svelte";
+
 export interface IResult {
     id: number;
     name: string;
@@ -32,3 +34,15 @@ export interface Variation {
     title: string;
     description: string;
   }
+
+export interface Recipe {
+    title: string;
+    description: string;
+    serving: number;
+    nutrition: string;
+    protein: string;
+    cuisine: string;
+    readyTime: number;
+    ingredients: string[];
+    directions: string[];
+  };

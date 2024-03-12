@@ -27,24 +27,21 @@
         cuisine,
       });
       console.log(response.data);
-      const { recipeId, variations } = response.data;
+      const { variations } = response.data;
       data_store.update(() => {
         console.log({
-          recipeId,
           protein: protein,
           nutrition: nutrition,
           cuisine: cuisine,
           variations: variations,
         });
         return {
-          recipeId,
           protein: protein,
           nutrition: nutrition,
           cuisine: cuisine,
           variations: variations,
         };
       });
-      console.log("to ==========> ", recipeId);
       step.update(() => 2)
     } catch (error: any) {
       console.error(error);
