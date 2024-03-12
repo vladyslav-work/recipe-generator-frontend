@@ -16,7 +16,7 @@
     wait = true;
     try {
       step.update(() => 3);
-      const response = await axios.post(`${SERVER_URL}/api`, {
+      const response = await axios.post(`${SERVER_URL}/api/generate`, {
         protein: $data_store.protein,
         nutrition: $data_store.nutrition,
         cuisine: $data_store.cuisine,
