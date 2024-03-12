@@ -27,8 +27,8 @@
 />
 
 <TabedResult
-  ingredients={ingredients}
-  directions={directions}
+  ingredients={$recipe?.ingredients}
+  directions={$recipe?.directions}
   servings={$recipe?.serving}
   readyTime={$recipe?.readyTime}
   generating={!$recipe}
