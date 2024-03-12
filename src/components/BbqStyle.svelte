@@ -15,7 +15,7 @@
       title={option.title}
       name="bbqStyle"
       description={option.description}
-      selected={$variation?.id === option.id}
+      selected={$variation?.title === option.title}
       onClick={() => handleSelection(option)}
     />
   {/each}
