@@ -6,7 +6,13 @@
     
     const ingredientArray = ingredient.split(",").map((s) => s.trim());
     let text = ""
-    if(ingredientArray.length > 1) text = `${ingredientArray[0]} <strong>${ingredientArray[1]}</strong>`
+    if (ingredientArray.length > 1) {
+        if (/[0-9]/.test(ingredientArray[0])) {
+            text = `${ingredientArray[0]} <strong>${ingredientArray[1]}</strong>`;
+        } else {
+            text = `<strong>${ingredientArray[0]}</strong> <em>${ingredientArray[1]}</em>`;
+        }
+    }
     else text = `<strong>${ingredientArray[0]}</strong>`
     if(ingredientArray.length > 2) text += ` <em>${ingredientArray[2]}</em>`;
     return text
