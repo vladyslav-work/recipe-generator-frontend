@@ -98,9 +98,9 @@
   </p>
 
   <div class="flex flex-col gap-3">
-    <Options options={protein} name="protein" />
+    <Options options={protein} name="protein" change={handleChange}/>
     <div class="py-2 lg:py-0"></div>
-    <Options options={nutritionalStyle} name="nutrition" />
+    <Options options={nutritionalStyle} name="nutrition" change={handleChange}/>
     <div class="py-2 lg:py-0"></div>
     <Select options={cuisine} name="cuisine" />
 

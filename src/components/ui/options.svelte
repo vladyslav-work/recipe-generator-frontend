@@ -4,9 +4,11 @@
   let selectedOption = "";
   export let options: { name: string; icon: string }[] = [];
   export let name: string;
+  export let change: Function;
 
   function handleSelection(value: string) {
     selectedOption = value;
+    change()
   }
 </script>
 
