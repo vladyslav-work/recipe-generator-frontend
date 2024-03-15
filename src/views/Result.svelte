@@ -1,15 +1,11 @@
 <script lang="ts">
   import AiBanner from "../components/AIBanner.svelte";
   import ShareBanner from "../components/ShareBanner.svelte";
-  import TabedResult from "../components/TabedResult.svelte";
+  import TableResult from "../components/TableResult.svelte";
   import { _ingredients, _directions } from "../lib/data";
   import Auth from "../components/Auth.svelte";
   import BreadCrumb from "../components/ui/bread-crumb.svelte";
-  import { data_store, variation, recipe, generating } from "../lib/store";
-
-  let ingredients: string[] = [];
-  let directions: string[] = [];
-
+  import { data_store, variation, recipe } from "../lib/store";
 </script>
 
 <BreadCrumb />
@@ -26,7 +22,7 @@
   generating={!$recipe}
 />
 
-<TabedResult
+<TableResult
   ingredients={$recipe?.ingredients}
   directions={$recipe?.directions}
   servings={$recipe?.serving}

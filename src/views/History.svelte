@@ -32,17 +32,8 @@
         protein: response.data.protein,
         cuisine: response.data.cuisine,
         readyTime: response.data.readyTime,
-        ingredients: response.data.ingredients.map(
-          (ingredient: {
-            quantity?: string;
-            name: string;
-            preparationMethod?: string;
-          }) =>
-            `${ingredient.quantity && ingredient.quantity.toLowerCase() !== "none" ? ingredient.quantity : ""} <strong>${ingredient.name}</strong> <em>${ingredient.preparationMethod && ingredient.preparationMethod.toLowerCase() !== "none" ? ingredient.preparationMethod : ""}</em>`
-        ),
-        directions: response.data.directions.map(
-          (description : string ) => description
-        ),
+        ingredients: response.data.ingredients,
+        directions: response.data.directions,
       }));
       console.log("select", response.data);
     } catch (error) {
