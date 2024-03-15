@@ -5,7 +5,9 @@
     console.log(ingredient);
     
     const ingredientArray = ingredient.split(",").map((s) => s.trim());
-    let text = `${ingredientArray[0]} <strong>${ingredientArray[1]}</strong>`
+    let text = ""
+    if(ingredientArray.length > 1) text = `${ingredientArray[0]} <strong>${ingredientArray[1]}</strong>`
+    else text = `<strong>${ingredientArray[0]}</strong>`
     if(ingredientArray.length > 2) text += ` <em>${ingredientArray[2]}</em>`;
     return text
   });
